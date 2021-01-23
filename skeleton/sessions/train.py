@@ -198,8 +198,9 @@ class Train(SessionBase):
             ]
 
             if self.best_acc is not None and self.best_epochs is not None and self.cur_acc is not None:
+                curr_acc, best_acc = self.cur_acc / 100.0, self.best_acc / 100.0
                 text.append(
-                    f'val acc: {self.cur_acc:.2%} / best: {self.best_acc:.2%} [{int(self.best_epochs)}]')
+                    f'val acc: {cur_acc:.2%} / best: {best_acc:.2%} [{int(self.best_epochs)}]')
             log.info(', '.join(text), update=True)
             self.imgs_seen += targets.size(0)
             if self.debug:

@@ -196,7 +196,7 @@ class Main:
         return train.train(self.a.max_epochs)
 
     def cli_test(self):
-        return self.eval_session(self.a).eval(report_num_params=False)
+        return self.eval_session(self.a).run_eval(report_num_params=False)
     cli_eval = cli_test
 
     def cli_info(self):

@@ -149,10 +149,14 @@ class SessionBase:
         self.tb_writer.add_scalars(
             int(self.epochs()),
             {"eval_loss": avg_loss}, prefix="eval")
-        log.info(f"Averaged accuracy top1/top5: {avg_top1:.2f}/{avg_top5:.2f}.")
         if report_num_params:
             num_params, flops = self.model.get_num_params_flops(inputs)
             log.info(f"Number of params {num_params}, number of Flops {flops}.")
+        return avg_top1, avg_top5, avg_loss
+    
+    def run_eval(self, suffix=None, key='eval', report_num_params=False):
+        top1, top5, loss = self.eval(suffix, key, report_num_params)
+        log.info(f"Averaged accuracy top1/top5: {top1:.2f}/{top5:.2f}.")
 
     def info(self, summary_depth=None):
         hook = SummaryHook(summary_depth)

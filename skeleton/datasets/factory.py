@@ -130,7 +130,7 @@ class DataLoader(torch.utils.data.DataLoader):
         super().__init__(
             dataset, batch_size, shuffle,
             pin_memory=self.pin_memory,
-            num_workers=workers, worker_init_fn=self.worker_init)
+            num_workers=0, worker_init_fn=self.worker_init)
         self.num_classes = info['num_classes']
         self.shape = info['shape']
 

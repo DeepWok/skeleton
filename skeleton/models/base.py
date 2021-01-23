@@ -1,6 +1,6 @@
 import torch
 from torch import nn
-from thop import profile
+# from thop import profile
 from ..utils import summarize
 
 
@@ -32,4 +32,5 @@ class ModelBase(nn.Module):
         torch.save(state, path)
     
     def get_num_params_flops(self, inputs):
-        macs, params = profile(self, inputs=(inputs, ))
+        pass
+        # macs, params = profile(self, inputs=(inputs, ))

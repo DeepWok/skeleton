@@ -1,3 +1,3 @@
 #!/usr/bin/env python
-from ske.cli import Main
+from skeleton.cli import Main
 Main().run()

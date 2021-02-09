@@ -127,7 +127,6 @@ class SessionBase:
             probs = torch.nn.functional.log_softmax(outputs, dim=1)
             loss = torch.nn.functional.nll_loss(probs, targets)
             top1, top5  = topk(probs, targets, k=(1, 5))
-            self.imgs_seen += targets.size(0)
         return (loss, top1, top5)
 
     def eval(self, suffix=None, key='eval', report_num_params=False):

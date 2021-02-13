@@ -18,14 +18,14 @@ class Train(SessionBase):
             self, model_name, dataset_name,
             load_name=None, save_name=None,
             gpus=1, workers=None, batch_size=128,
-            lr=0.01, 
+            lr=0.01,
             lr_scheduler=None,
             max_epochs=None,
             debug=False,
             model_dir="models/"):
         super().__init__(
             model_name, dataset_name,
-            load_name, save_name, 
+            load_name, save_name,
             gpus, workers, batch_size,
             max_epochs,
             model_dir=model_dir)
@@ -198,7 +198,7 @@ class Train(SessionBase):
             ]
 
             if self.best_acc is not None and self.best_epochs is not None and self.cur_acc is not None:
-                curr_acc, best_acc = self.cur_acc / 100.0, self.best_acc / 100.0
+                cur_acc, best_acc = self.cur_acc / 100.0, self.best_acc / 100.0
                 text.append(
                     f'val acc: {cur_acc:.2%} / best: {best_acc:.2%} [{int(self.best_epochs)}]')
             log.info(', '.join(text), update=True)
